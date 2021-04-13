@@ -1,0 +1,17 @@
+# Hyphen-group
+
+## DevOps Engineer practical test
+
+Please answer all questions. Use the tools / languages you find most confident in.
+
+### Section 1 - CI 
+
+1. Using GitHub and GitHub actions build a docker container. The docker container should container an API server which can be used for part two. 
+
+2. When a contributor creates a PR, please run tests and report results.
+
+### Secion 2 - CD
+
+1. When a tag is created please add release notes 
+
+2. Also, please use Terraform to deploy the container to Kubernetes
