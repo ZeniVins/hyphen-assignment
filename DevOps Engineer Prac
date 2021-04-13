@@ -13,3 +13,7 @@ Please answer all questions. Use the tools / languages you find most confident i
 ### Section 2 - CD
 
 1. After a successful merge into the master branch use Terraform to deploy the container to Kubernetes as a stateless application.
+
+### Section 3 - AWS Config
+
+1. Create an IAM policy that allows a user to read and write to S3 and encrypt and decrypt passwords using SOPS (https://github.com/mozilla/sops)
