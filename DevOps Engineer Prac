@@ -12,6 +12,6 @@ Please answer all questions. Use the tools / languages you find most confident i
 
 ### Section 2 - CD
 
-1. When a tag is created please add release notes 
+1. When a tag is created please add release notes.
 
-2. Also, please use Terraform to deploy the container to Kubernetes
+2. After release notes have been added use Terraform to deploy the container to Kubernetes.
