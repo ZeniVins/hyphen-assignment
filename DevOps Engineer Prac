@@ -6,7 +6,7 @@ Please answer all questions. Use the tools / languages you find most confident i
 
 ### Section 1 - CI 
 
-1. Using GitHub and GitHub actions build a docker container. The docker container should container an API server which can be used for part two. 
+1. Using GitHub and GitHub actions build a docker container. (The docker container should contain an API server which can be used for part two)
 
 2. When a contributor creates a PR, please run tests and report results.
 
