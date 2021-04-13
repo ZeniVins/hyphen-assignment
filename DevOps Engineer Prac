@@ -12,6 +12,4 @@ Please answer all questions. Use the tools / languages you find most confident i
 
 ### Section 2 - CD
 
-1. When a tag is created please add release notes.
-
-2. After release notes have been added use Terraform to deploy the container to Kubernetes.
+1. After a successful merge into the master branch use Terraform to deploy the container to Kubernetes as a stateless application.
