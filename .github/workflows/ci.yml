@@ -32,3 +32,10 @@ jobs:
     
       - name: Check http status code
         run: curl http://127.0.0.1:80
+
+      - id: test-server
+        run: curl http://127.0.0.1:80
+      - uses: nick-invision/assert-action@v1
+        with:
+          expected: "Hello Lina"
+          actual: ${{ steps.test-server.outputs.value }}
