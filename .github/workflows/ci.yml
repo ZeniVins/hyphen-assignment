@@ -36,5 +36,5 @@ jobs:
       - name: Check http status code of production site
         uses: lakuapik/gh-actions-http-status@v1
         with:
-          sites: '["http://127.0.0.1:80"]'
+          sites: '["http://127.0.0.1"]'
           expected: '[200]'
