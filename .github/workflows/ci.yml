@@ -26,3 +26,12 @@ jobs:
       # Build docker image
       - name: Build docker
         run: docker build . --file Dockerfile --tag simpledocker:v1
+
+      - name: Run container
+        run: docker run -d -p 80:80 simpledocker:v1
+    
+      - name: Check http status code
+        uses: lakuapik/gh-actions-http-status@v1
+        with:
+          sites: '["localhost:80"]'
+          expected: '[200]'
