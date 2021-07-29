@@ -61,9 +61,11 @@ jobs:
 
       - name: Terraform Init
         id: init
+        working-directory: ./terraform
         run: terraform init
 
       - name: Deploy Terraform to minikube
+        working-directory: ./terraform
         # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
