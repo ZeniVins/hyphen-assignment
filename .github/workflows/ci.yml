@@ -16,7 +16,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest 
-    # if: github.event.pull_request.merged == 'true'
+    if: github.event.pull_request.merged == 'true'
    
     steps:
       - uses: actions/checkout@v2
@@ -59,15 +59,5 @@ jobs:
           minikube service list
           minikube service myservice --url
           echo "------------------opening the service------------------"
-      # curl $(minikube service myservice --url) 
+          curl $(minikube service myservice --url) 
 
-      - name: Test service
-        uses: indiesdev/curl@v1
-        id: curl
-        with:
-          url: $(minikube service myservice --url) 
-          method: 'GET'
-          accept: 200
-
-      - name: 'Use response'
-        run: echo ${{ steps.curl.outputs.response }}
