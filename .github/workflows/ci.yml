@@ -71,6 +71,7 @@ jobs:
 
       - name: Test service URLs
         run: |
+          sleep 10s
           minikube service list
           minikube service myservice --url
           echo "------------------opening the service------------------"
