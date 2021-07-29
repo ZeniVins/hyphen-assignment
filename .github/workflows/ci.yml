@@ -38,6 +38,8 @@ jobs:
     # if: github.event.pull_request.merged == 'true'
    
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 
@@ -48,6 +50,8 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
+          pwd
+          ls
           docker build -f ./Dockerfile -t simpledocker:v1 .
           echo -n "verifying images:"
           docker images        
