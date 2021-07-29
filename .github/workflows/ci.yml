@@ -39,7 +39,7 @@ jobs:
    
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 
@@ -54,13 +54,22 @@ jobs:
           ls
           docker build -f ./Dockerfile -t simpledocker:v1 .
           echo -n "verifying images:"
-          docker images        
-      # - name: Deploy to minikube
-      #   run:
-      #     kubectl apply -f deploy-to-minikube.yaml
-      # - name: Test service URLs
-      #   run: |
-      #     minikube service list
-      #     minikube service example --url
-      #     echo "------------------opening the service------------------"
-      #     curl $(minikube service example --url) 
+          docker images
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Deploy Terraform to minikube
+        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve
+
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service example --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service example --url) 
