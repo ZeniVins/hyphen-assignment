@@ -7,7 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -17,10 +16,6 @@ jobs:
    
     steps:
       - uses: actions/checkout@v2
-
-      - name: Test merge
-        if: github.event.pull_request.merged == true
-        run: echo "ok"
 
       - name: Setup Minikube
         uses: manusa/actions-setup-minikube@v2.4.2
@@ -51,11 +46,9 @@ jobs:
 
       - name: Deploy Terraform to minikube
         working-directory: ./terraform
-        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
       - name: Test service URLs
-        if: github.event.pull_request.merged == true
         run: |
           sleep 10s
           minikube service list
