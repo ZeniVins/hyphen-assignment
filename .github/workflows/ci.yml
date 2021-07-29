@@ -47,13 +47,13 @@ jobs:
         run: terraform init
 
       - name: Deploy Terraform to minikube
-        if: github.event.pull_request.merged == true
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         working-directory: ./terraform
         # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
       - name: Test service URLs
-        if: github.event.pull_request.merged == true
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         run: |
           sleep 10s
           minikube service list
