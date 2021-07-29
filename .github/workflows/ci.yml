@@ -13,27 +13,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  # build:
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
 
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  #     - uses: actions/checkout@v2
-
-  #     # Build docker image
-  #     - name: Build docker
-  #       run: docker build . --file Dockerfile --tag simpledocker:v1
-
-  #     - name: Run container
-  #       run: docker run -d -p 80:80 simpledocker:v1
-    
-  #     - name: Check http status code
-  #       run: curl http://127.0.0.1:80
-
-  deploy:
+  build:
     runs-on: ubuntu-latest 
     # if: github.event.pull_request.merged == 'true'
    
@@ -56,7 +37,7 @@ jobs:
           pwd
           ls
           docker build -f ./Dockerfile -t simpledocker:v1 .
-          echo -n "verifying images:"
+          echo -n "verifying local docker images:"
           docker images
 
       - name: Setup Terraform
@@ -78,4 +59,15 @@ jobs:
           minikube service list
           minikube service myservice --url
           echo "------------------opening the service------------------"
-          curl $(minikube service myservice --url) 
+      # curl $(minikube service myservice --url) 
+
+      - name: Test service
+        uses: indiesdev/curl@v1
+        id: curl
+        with:
+          url: $(minikube service myservice --url) 
+          method: 'GET'
+          accept: 200
+
+      - name: 'Use response'
+        run: echo ${{ steps.curl.outputs.response }}
