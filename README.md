@@ -1,14 +1,17 @@
 # CICD
 ## Description
-The workflow will build a docker image and push it to Docker hub registry
+The workflow will build a docker image and push it to Docker hub registry.
+It will run a test (test file test.sh) to check that the application is accessible when the container is running.
+Then it will start inside the github action runner a minikube cluster (I do the deployment locally in the github runner for simplicity here, but normally we should deploy on an external Kubernetes cluster).
+Then it will use Terraform to deploy a pod and a service on the Minikube cluster.
+Then we test that the service is accessible.
+
 
 # AWS Config
 
 An aws user s3-kms-user was created and attached to the policy policy-s3-kms (the json of the policy is in the root folder) 
 
-Credentials of aws user s3-kms-user:
-access key:AKIASEECTMC2NQHB7HTC
-secret key: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
+I will share credentials of aws user s3-kms-user by email.
 
 s3 bucket: s3://hyphen-assignment-s3-bucket
 KMS key ARN : arn:aws:kms:ap-southeast-1:146302787764:key/a39c3313-eedd-4bb8-a227-f542795026f5

@@ -38,11 +38,12 @@ jobs:
       - name: Image test
         run: |
           docker images
-          docker run -d -p 80:80 linouche5/public-repo:latest 
-          curl http://127.0.0.1:80
+          docker run -d -p 8080:80 linouche5/public-repo:latest 
+          ./test.sh http://127.0.0.1:8080   
 
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest 
    
     steps:
