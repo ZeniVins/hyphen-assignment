@@ -1,9 +1,10 @@
 name: CI
 
 on:
-  # Triggers the workflow on push only on the master branch, master branch is protected so it only accepts push with a PR
+  # Triggers the workflow on push and PR
   push:
     branches: [ master ]
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -41,6 +42,7 @@ jobs:
 
 
   deploy:
+    if: github.event.pull_request.merged == true
     needs: build
     runs-on: ubuntu-latest 
    
