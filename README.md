@@ -9,7 +9,7 @@
 
 ## How to test
 - Clone this repository
-- create a new branch ``git checkout -b mytest````
+- create a new branch
 - Modify the text in index.html file
 - Commit and push your branch
 - Create a pull request

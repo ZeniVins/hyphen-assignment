@@ -1,11 +1,13 @@
 name: CD
 
 on:
-  # Triggers the workflow on push on master branch
-  push:
-    branches: [ master ]
+  # Triggers the workflow after CI workflow on master branch
   workflow_run:
     workflows: ["CI"]
+    branches: [ master ]
+    types: 
+      - completed
+      - requested
 
 
 jobs:
