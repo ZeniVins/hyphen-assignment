@@ -1,4 +1,5 @@
 # CICD
+
 ## Description
 The workflow will build a docker image and push it to Docker hub registry.
 It will run a test (test file test.sh) to check that the application is accessible when the container is running.

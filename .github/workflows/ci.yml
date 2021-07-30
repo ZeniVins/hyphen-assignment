@@ -1,10 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push only on the master branch, master branch is protected so it only accepts push with a PR
   push:
     branches: [ master ]
   workflow_dispatch:
@@ -40,7 +37,6 @@ jobs:
           docker images
           docker run -d -p 8080:80 linouche5/public-repo:latest
           sleep 5s
-          curl http://127.0.0.1:8080 
           ./test.sh http://127.0.0.1:8080   
 
 
@@ -59,16 +55,6 @@ jobs:
 
       - name: Try the cluster !
         run: kubectl get pods -A
-
-      # - name: Build image
-      #   run: |
-      #     export SHELL=/bin/bash
-      #     eval $(minikube -p minikube docker-env)
-      #     pwd
-      #     ls
-      #     docker build -f ./Dockerfile -t simpledocker:v1 .
-      #     echo -n "verifying local docker images:"
-      #     docker images
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
