@@ -1,11 +1,12 @@
 name: CD
 
 on:
-  # Triggers the workflow on push on master branch
-  push:
-    branches: [ master ]
+  # Triggers the workflow after CI workflow on master branch
   workflow_run:
     workflows: ["CI"]
+    branches: [ master ]
+    types: 
+      - completed
 
 
 jobs:
@@ -13,6 +14,7 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest 
+    if: github.ref == 'refs/heads/master'
    
     steps:
       - uses: actions/checkout@v2
