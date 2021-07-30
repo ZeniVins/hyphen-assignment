@@ -33,9 +33,13 @@ jobs:
           tags: linouche5/public-repo:latest
 
       - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+
+      - name: Image test
         run: |
-          echo ${{ steps.docker_build.outputs.digest }}
           docker images
+          docker run -d -p 80:80 linouche5/public-repo:latest 
+          curl http://127.0.0.1:80
 
 
 
