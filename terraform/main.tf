@@ -11,7 +11,7 @@ resource "kubernetes_pod" "mypod" {
   }
   spec {
     container {
-      image = "simpledocker:v1"
+      image = "linouche5/public-repo:latest"
       name  = "webserver"
     }
   }
