@@ -30,18 +30,13 @@ jobs:
         with:
           context: .
           push: true
-          tags: simpledocker:latest
+          tags: linouche5/public-repo:latest
 
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
-  test:
-    name: Test the docker image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
         run: |
+          echo ${{ steps.docker_build.outputs.digest }}
           docker images
+
 
 
   # deploy:

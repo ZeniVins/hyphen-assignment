@@ -1,5 +1,6 @@
 # CICD
-
+## Description
+The workflow will build a docker image and push it to Docker hub registry
 
 # AWS Config
 
