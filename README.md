@@ -1,11 +1,11 @@
 # CICD
 
 ## Description
-The workflow will build a docker image and push it to Docker hub registry.
-It will run a test (test file test.sh) to check that the application is accessible when the container is running.
-Then it will start inside the github action runner a minikube cluster (I do the deployment locally in the github runner for simplicity here, but normally we should deploy on an external Kubernetes cluster).
-Then it will use Terraform to deploy a pod and a service on the Minikube cluster.
-Then we test that the service is accessible.
+- The workflow will build a docker image and push it to Docker hub registry.
+- It will run a test (test file test.sh) to check that the application is accessible when the container is running.
+- Then it will start inside the github action runner a minikube cluster (I do the deployment locally in the github runner for simplicity here, but normally we should deploy on an external Kubernetes cluster).
+- Then it will use Terraform to deploy a pod and a service on the Minikube cluster.
+- Then we test that the service is accessible.
 
 
 # AWS Config
