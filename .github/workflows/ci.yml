@@ -38,7 +38,9 @@ jobs:
       - name: Image test
         run: |
           docker images
-          docker run -d -p 8080:80 linouche5/public-repo:latest 
+          docker run -d -p 8080:80 linouche5/public-repo:latest
+          sleep 5s
+          curl http://127.0.0.1:8080 
           ./test.sh http://127.0.0.1:8080   
 
 
